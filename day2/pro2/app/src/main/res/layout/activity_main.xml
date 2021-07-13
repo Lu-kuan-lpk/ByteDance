@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_marginTop="150dp"
+        android:layout_gravity="center"
+        android:id="@+id/my"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="my act"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="123dp" />
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/pra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pra act"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="226dp" />
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/baidu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="baidu"
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="386dp" />
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/dial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dial"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="493dp" />
+
+    <Button
+        android:id="@+id/newpage"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:text="uipage" />
+
+    <Button
+        android:id="@+id/recycle"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:text="recycle" />
+</LinearLayout>
