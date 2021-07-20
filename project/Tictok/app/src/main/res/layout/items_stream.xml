@@ -8,7 +8,8 @@
     android:layout_marginLeft="5dp"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
-    android:background="#10FFFFFF">
+    android:background="#10FFFFFF"
+    android:id="@+id/stream_back">
 
     <LinearLayout
         android:layout_marginTop="12dp"
@@ -17,14 +18,16 @@
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:orientation="vertical">
-        <ImageView
-            android:id="@+id/iv"
+        <ImageButton
+            android:id="@+id/stream_iv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:adjustViewBounds="true"
+            android:background="@color/transparent"
             android:scaleType="centerCrop"/>
         <TextView
+            android:id="@+id/stream_content"
             android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,6 +44,7 @@
             >
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/stream_pic"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:layout_alignParentTop="true"
@@ -50,7 +54,7 @@
 
             <TextView
                 android:layout_marginLeft="10dp"
-                android:id="@+id/user_id"
+                android:id="@+id/stream_id"
                 android:textSize="10dp"
                 android:gravity="center"
                 android:layout_width="wrap_content"

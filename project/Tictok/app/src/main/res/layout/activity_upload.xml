@@ -11,14 +11,15 @@
         android:layout_height="25dp"
         android:layout_marginTop="39dp">
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/upload_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
-
+            android:background="@color/transparent"
             android:src="@drawable/back">
 
-        </ImageView>
+        </ImageButton>
 
 
         <TextView
@@ -216,6 +217,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/upload_submit"
                 android:layout_marginLeft="20dp"
                 android:layout_width="275dp"
                 android:layout_height="match_parent"

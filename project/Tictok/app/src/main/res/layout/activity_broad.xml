@@ -18,13 +18,15 @@
         android:orientation="horizontal"
         >
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/broad_back"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/back"
+            android:background="@color/transparent"
             android:layout_marginRight="22dp">
 
-        </ImageView>
+        </ImageButton>
 
         <LinearLayout
             android:layout_width="300dp"

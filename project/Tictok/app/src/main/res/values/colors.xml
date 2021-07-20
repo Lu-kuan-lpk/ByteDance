@@ -13,4 +13,5 @@
     <color name="line">#808080</color>
     <color name="background_grey">#50B3B3B3</color>
     <color name="text_log">#DDFFFFFF</color>
+    <color name="transparent">#00000000</color>
 </resources>
