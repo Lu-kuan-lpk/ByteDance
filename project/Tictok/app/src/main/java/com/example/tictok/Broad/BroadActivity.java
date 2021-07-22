@@ -14,11 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tictok.Network.MessageListResponse;
+import com.example.tictok.network.MessageListResponse;
 import com.example.tictok.R;
 import com.example.tictok.Stream.StreamActivity;
-
-import java.util.ArrayList;
 
 public class BroadActivity extends AppCompatActivity {
     private static final String TAG = "BroadActivity";

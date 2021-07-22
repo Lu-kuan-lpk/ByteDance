@@ -1,9 +1,7 @@
 package com.example.tictok.Stream;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
-        import android.view.LayoutInflater;
+import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.AdapterView;
@@ -11,20 +9,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
-import androidx.annotation.NonNull;
-        import androidx.recyclerview.widget.RecyclerView;
-        import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
-        import com.bumptech.glide.Glide;
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.tictok.Broad.BroadActivity;
-import com.example.tictok.Network.MessageListResponse;
-import com.example.tictok.Network.MyMessage;
+import com.example.tictok.network.MessageListResponse;
+import com.example.tictok.network.MyMessage;
 import com.example.tictok.R;
 
-import java.net.URL;
 import java.util.ArrayList;
         import java.util.List;
 

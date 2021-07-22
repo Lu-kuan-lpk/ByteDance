@@ -7,18 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.tictok.Network.MessageListResponse;
-import com.example.tictok.Network.MyMessage;
+import com.example.tictok.network.MessageListResponse;
+import com.example.tictok.network.MyMessage;
 import com.example.tictok.R;
 import com.example.tictok.Stream.BroadClickListener;
-
-import java.util.zip.Inflater;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 

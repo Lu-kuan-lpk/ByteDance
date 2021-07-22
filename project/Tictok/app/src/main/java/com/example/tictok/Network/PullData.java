@@ -1,4 +1,4 @@
-package com.example.tictok.Network;
+package com.example.tictok.network;
 
 import android.net.Uri;
 import android.os.Build;
@@ -81,8 +81,9 @@ public class PullData extends Thread{
             e.printStackTrace();
             Log.e(TAG, "run: "+e.toString());
         }
-        pullEndListener.Finish();
         pullEndListener.DataReturn(result);
+        pullEndListener.Finish();
+
     }
 
     private void pullTest(){

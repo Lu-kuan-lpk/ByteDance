@@ -8,7 +8,7 @@
     android:layout_marginLeft="5dp"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
-    android:background="#10FFFFFF"
+    android:background="#1AFFFFFF"
     android:id="@+id/stream_back">
 
     <LinearLayout

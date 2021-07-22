@@ -1,4 +1,4 @@
-package com.example.tictok.Network;
+package com.example.tictok.network;
 
 
 import okhttp3.MultipartBody;

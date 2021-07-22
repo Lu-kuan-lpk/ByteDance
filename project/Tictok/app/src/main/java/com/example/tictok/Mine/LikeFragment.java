@@ -18,11 +18,10 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.tictok.Broad.BroadActivity;
-import com.example.tictok.Network.MessageListResponse;
+import com.example.tictok.network.MessageListResponse;
 import com.example.tictok.R;
 import com.example.tictok.Stream.BroadClickListener;
 import com.example.tictok.Stream.StreamActivity;
-import com.example.tictok.Stream.StreamAdapter;
 
 public class LikeFragment extends Fragment {
     private LottieAnimationView lottieAnimationView;
