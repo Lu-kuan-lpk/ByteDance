@@ -4,6 +4,7 @@ package com.example.tictok.Broad;
 import android.content.Context;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+import com.example.tictok.Network.MessageListResponse;
+import com.example.tictok.Network.MyMessage;
 import com.example.tictok.R;
 
 import org.w3c.dom.Text;
@@ -21,19 +27,22 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
-    private int[] videos = {R.raw.v1,R.raw.v3};
-    private int[] imgs = {R.drawable.douyin, R.drawable.douyin};
-    private List<String> mTitles = new ArrayList<>();
-    private List<String> mMarqueeList = new ArrayList<>();
-    private Context mContext;
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
-    public VideoAdapter(Context context) {
+public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
+    private Context mContext;
+    private MessageListResponse messageListResponse;
+    private int tpos;
+    public OnHeartClickListener onHeartClickListener;
+
+    void setOnHeartClickListener(OnHeartClickListener onHeartClickListener){
+        this.onHeartClickListener=onHeartClickListener;
+    }
+
+    public VideoAdapter(Context context, MessageListResponse messageListResponse,int tpos) {
         this.mContext = context;
-        mTitles.add("Android仿抖音主界面UI效果,\n一起来学习Android开发啊啊啊啊啊\n#Android高级UIAndroid开发");
-        mTitles.add("@乔布奇\nAndroid RecyclerView自定义\nLayoutManager的使用方式，仿抖音效果哦");
-        mMarqueeList.add("哈哈创作的原声-乔布奇asdfasldfjlsadjflasdjlf");
-        mMarqueeList.add("嘿嘿创作的原声-Jarchielsadjflkasjdflasjdflasjdflkj");
+        this.messageListResponse=messageListResponse;
+        this.tpos=tpos;
     }
 
     @Override
@@ -43,29 +52,16 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         return new ViewHolder(itemv);
     }
 
-
-
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int pos) {
-
         holder.Bind(pos);
+        onHeartClickListener.click(tpos+pos);
 
-
-        //第一种方式：获取视频第一帧作为封面图片
-//    MediaMetadataRetriever media = new MediaMetadataRetriever();
-//    media.setDataSource(mContext,Uri.parse("android.resource://" + mContext.getPackageName() + "/" + videos[pos % 2]));
-//    holder.mThumb.setImageBitmap(media.getFrameAtTime());
-//        //第二种方式：使用固定图片作为封面图片
-//        holder.mThumb.setImageResource(imgs[pos % 2]);
-//        holder.mVideoView.setVideoURI(Uri.parse("android.resource://" + mContext.getPackageName() + "/" + videos[pos % 2]));
-//        holder.mTitle.setText(mTitles.get(pos % 2));
-//        holder.mMarquee.setText(mMarqueeList.get(pos % 2));
-//        holder.mMarquee.setSelected(true);
     }
 
     @Override
     public int getItemCount() {
-        return Integer.MAX_VALUE;
+        return messageListResponse.feeds.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -89,13 +85,27 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         }
 
         public void Bind(int pos){
-            MediaMetadataRetriever media = new MediaMetadataRetriever();
-            media.setDataSource(mContext,Uri.parse("android.resource://" + mContext.getPackageName() + "/" + videos[pos % 2]));
-            mThumb.setImageBitmap(media.getFrameAtTime());
-            //mThumb.setImageResource(imgs[pos % 2]);
-            mVideoView.setVideoURI(Uri.parse("android.resource://" + mContext.getPackageName() + "/" + videos[pos % 2]));
-            mTitle.setText(mTitles.get(pos % 2));
-            mMarquee.setText(mMarqueeList.get(pos % 2));
+            MyMessage mes=messageListResponse.feeds.get(pos+tpos);
+
+            Log.d("VideoAdapter", "Bind: "+tpos+pos);
+
+            //设置第一帧作为封面
+//            MediaMetadataRetriever media = new MediaMetadataRetriever();
+//            media.setDataSource(mContext,Uri.parse(mes.videoUrl));
+//            mThumb.setImageBitmap(media.getFrameAtTime());
+            Glide.with(mContext)
+                    .load(mes.imageUrl)
+                    .placeholder(R.drawable.loading)
+                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(80)))
+                    .transition(withCrossFade())
+                    .into(mThumb);
+
+            Log.d("VideoAdapter", "Bind: "+mes.videoUrl);
+            //设置相关参数
+            mVideoView.setVideoURI(Uri.parse(mes.videoUrl));
+            user.setText(mes.userName);
+            mTitle.setText(mes.extraValue);
+            mMarquee.setText("好听的音乐，就在tictic，动人的歌声，还在tictic，本project由芦宽和卢凯炫共同完成");
             mMarquee.setSelected(true);
         }
     }

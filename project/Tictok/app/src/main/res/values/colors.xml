@@ -14,4 +14,5 @@
     <color name="background_grey">#50B3B3B3</color>
     <color name="text_log">#DDFFFFFF</color>
     <color name="transparent">#00000000</color>
+    <color name="text_grey">#66FFFFFF</color>
 </resources>

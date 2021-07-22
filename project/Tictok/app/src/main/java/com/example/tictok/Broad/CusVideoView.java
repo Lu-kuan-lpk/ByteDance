@@ -23,5 +23,6 @@ public class CusVideoView extends VideoView {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int width = getDefaultSize(getWidth(),widthMeasureSpec);
         int height = getDefaultSize(getHeight(),heightMeasureSpec);
+        setMeasuredDimension(width, height);
     }
 }

@@ -20,15 +20,18 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.tictok.Broad.BroadActivity;
+import com.example.tictok.Network.MessageListResponse;
+import com.example.tictok.Network.MyMessage;
 import com.example.tictok.R;
 
-        import java.util.ArrayList;
+import java.net.URL;
+import java.util.ArrayList;
         import java.util.List;
 
 public class StreamAdapter extends RecyclerView.Adapter<StreamAdapter.ViewHolder> {
     String tryurl = "https://lf1-cdn-tos.bytescm.com/obj/static/ies/bytedance_official_cn/_next/static/images/0-390b5def140dc370854c98b8e82ad394.png";
     String TAG="MyAdapter";
-    List<DataStream> mData = new ArrayList<>();
+    MessageListResponse messageListResponse;
 
     private Context context;
     private AdapterView.OnItemClickListener mListen;
@@ -40,14 +43,10 @@ public class StreamAdapter extends RecyclerView.Adapter<StreamAdapter.ViewHolder
         this.broadClickListener = broadClickListener;
     }
 
-    public StreamAdapter(Context context){
+    //初始化数据
+    public StreamAdapter(MessageListResponse messageListResponse,Context context){
         this.context=context;
-        //list 可以用来显示文字
-        for(int i=0;i<100;i++) list.add(String.format("%s",i));
-    }
-
-    public StreamAdapter(List<DataStream> data){
-        mData.addAll(data);
+        this.messageListResponse=messageListResponse;
     }
 
     @Override
@@ -71,7 +70,7 @@ public class StreamAdapter extends RecyclerView.Adapter<StreamAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return messageListResponse.feeds.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -90,39 +89,26 @@ public class StreamAdapter extends RecyclerView.Adapter<StreamAdapter.ViewHolder
             background= itemView.findViewById(R.id.stream_back);
         }
         public void onBind(int position){
+            MyMessage mes=messageListResponse.feeds.get(position);
+            String imageUrl=mes.imageUrl;
+            String video_url=mes.videoUrl;
+            String Username=mes.userName;
+            String sextra=mes.extraValue;
 
-            if(position%3==0){
-                //mImageView.setImageResource(R.drawable.num0);
-                Glide.with(context)
-                        .load(tryurl)
+            Glide.with(context)
+                        .load(imageUrl)
                         .placeholder(R.drawable.loading)
                         .apply(RequestOptions.bitmapTransform(new RoundedCorners(80)))
                         .transition(withCrossFade())
                         .into(mimagebutton);
-            }
-            else if(position%3==1){
-//                mImageView.setImageResource(R.drawable.num4);
-//                Glide.with(context).load(R.drawable.num4).into(mImageView);
-                Glide.with(context)
-                        .load(R.drawable.num4)
-                        .placeholder(R.drawable.loading)
-                        .apply(RequestOptions.bitmapTransform(new RoundedCorners(80)))
-                        .transition(withCrossFade())
-                        .into(mimagebutton);
-            }
-            else{
-//                mImageView.setImageResource(R.drawable.num5);
-//                Glide.with(context).load(R.drawable.num5).into(mImageView);
-                Glide.with(context)
-                        .load(R.drawable.num5)
-                        .placeholder(R.drawable.loading)
-                        .apply(RequestOptions.bitmapTransform(new RoundedCorners(80)))
-                        .transition(withCrossFade())
-                        .into(mimagebutton);
-            }
 
-            Log.d(TAG, "onBind: "+ ViewGroup.LayoutParams.MATCH_PARENT);
+            content.setText(sextra);
+            id.setText(Username);
 
         }
+    }
+
+    public void refresh(){
+        notifyDataSetChanged();
     }
 }
